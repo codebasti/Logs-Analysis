@@ -58,6 +58,8 @@ def errorday():
         print row[0].strftime('%B %m, %Y'), "-", row[1], "% errors"
     db.close
 
+# The following code defines the output and adds headlines and delimiters to
+# make the output more readable.
 print "-----START-----"
 print "\n"
 print "The three most popular articles of all time:"

@@ -2,6 +2,17 @@
 #### _by Sebastian Pütz_
 This project contains a python programm, that creates requests to a PSQL-database and prints them into the console.
 
+## Program's design
+The python-file logan.py (LOGs-ANalysis) mainly contains 3 functions, that are
+ anatomically similar. Each function connects to the given news-database, creates a
+ cursor and executes a SQL-query. These queries are requesting data from one or
+ more tables (including manually created views) inside our db and connect, count, filter, select etc. this data.
+ The result is getting fetched into a readable format and printed to the console.
+ The db-connection gets closed after each function.
+ The last part of "logan.py" is defined by the function-calls themselves, aswell
+ as some more formatting and organizing of the output, including headlines, delimiters and an "End"-statement for letting us know, when the programm finished.
+
+
 ## Install and run
 
 1. Install [VirtualBox](virtualbox.com)
