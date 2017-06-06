@@ -22,7 +22,7 @@ The python-file logan.py (LOGs-ANalysis) mainly contains 3 functions, that are
 3. Clone/Fork this repository, connect to vagrant and navigate into the shared
 folger "vagrant"
 ```sh
-$ git clone https://github.com/codebasti/logs-analysis-project/
+$ git clone https://github.com/codebasti/Logs-Analysis/
 $ cd logs-analysis-project
 $ vagrant up
 $ vagrant ssh
