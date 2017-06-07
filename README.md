@@ -47,33 +47,29 @@ following commands:
 psql -d news
 ```
 **View 1 - Each articles' total views**  
-(Keep in mind, that you should execute the following code as 1 line)
 ```
 CREATE VIEW articleviews AS
-SELECT articles.title, COUNT(log.path) AS sum, articles.author
+SELECT articles.title,
+COUNT(log.path) AS sum
 FROM articles, log
 WHERE log.path LIKE '%'||articles.slug
 GROUP BY articles.title
 ORDER BY sum DESC;
 ```
 **View 2 - Each authors' total articleviews**  
-(Keep in mind, that you should execute the following code as 1 line)
 ```
 CREATE VIEW articleauthors AS
-SELECT articleauthors.name, SUM(articleviews.sum)
-FROM articleauthors JOIN articleviews
-ON articleauthors.title = articleviews.title
-GROUP BY articleauthors.name
-ORDER BY sum DESC;
+SELECT articles.title, articles.author, authors.name
+FROM articles join authors
+ON articles.author = authors.id;
 ```
 **View 3 - Days where more than 1% of requests lead to errors**  
-(Keep in mind, that you should execute the following code as 1 line)
 ```
 CREATE VIEW dailyrequests AS
 SELECT date(log.time) AS log_day,
-  COUNT (CASE WHEN status LIKE '%200 OK%' THEN 1 END) AS views,
-  COUNT (CASE WHEN status LIKE '%404%' THEN 1 END) AS errors,
-  COUNT (method) AS requests
+COUNT (CASE WHEN status LIKE '%200 OK%' THEN 1 END) AS views,
+COUNT (CASE WHEN status LIKE '%404%' THEN 1 END) AS errors,
+COUNT (method) AS requests
 FROM log
 GROUP BY date(log.time)
 ORDER BY log_day;
